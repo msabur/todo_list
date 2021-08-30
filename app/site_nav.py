@@ -10,4 +10,7 @@ def navbar():
         items.extend([View("Profile", "profile"), View("Log Out", "logout")])
     else:
         items.extend([View("Log in", "login"), View("Register", "register")])
-    return Navbar(app.config.get("SITE_NAME"), *items)
+    return Navbar(
+        View(app.config.get("SITE_NAME"), 'index'),
+        *items
+    )

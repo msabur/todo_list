@@ -1,6 +1,7 @@
-from . import db
+from . import db, admin
 from flask_login import UserMixin
 from werkzeug.security import check_password_hash
+from flask_admin.contrib.sqla import ModelView
 
 
 class User(UserMixin, db.Model):
@@ -25,3 +26,6 @@ class Task(db.Model):
 
     def __repr__(self) -> str:
         return "<Task {}>".format(self.title)
+
+admin.add_view(ModelView(User, db.session))
+admin.add_view(ModelView(Task, db.session))
