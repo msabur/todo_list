@@ -1,0 +1,21 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/utils.html" as utils %}
+
+{% block title %}
+{% if title %}
+{{ title }} - Task Tracker
+{% else %}
+Welcome to {{ config.SITE_NAME}}
+{% endif %}
+{% endblock %}
+
+{% block navbar %}
+{{ nav.navbar.render() }}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {{ utils.flashed_messages() }}
+    {% block app_content %}{% endblock %}
+</div>
+{% endblock %}

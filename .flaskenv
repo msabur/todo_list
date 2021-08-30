@@ -1,0 +1,2 @@
+FLASK_APP=task_tracker
+FLASK_DEBUG=true

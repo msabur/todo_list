@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block app_content %}
+<p>Assalamu alaikum {{ name }}!</p>
+<button class="btn btn-primary" id="newTask">New Task</button>
+{{ wtf.quick_form(form, id="taskForm") }}
+
+<h3>Your Tasks:</h3>
+<table class="table table-hover">
+	<tr>
+		<th>Title</th>
+		<th>Description</th>
+		<th>Status</th>
+	</tr>
+	{% for task in tasks %}
+	<tr>
+		<td><a href="/editTask/{{ task.id }}"> {{ task.title}}</a></td>
+		<td>{{ task.description }}</td>
+		<td>{{ task.status }}</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+	let form = $("#taskForm")
+	let taskButton = $("#newTask")
+	taskButton.click(function () {
+		form.toggle(duration = 100);
+	});
+</script>
+{% endblock %}
+
+{% block styles %}
+{{ super() }}
+<style>
+	#taskForm {
+		display: none;
+	}
+</style>
+{% endblock %}
