@@ -2,7 +2,7 @@
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block app_content %}
-<p>Assalamu alaikum {{ name }}!</p>
+<p>Hello {{ name }}!</p>
 <button class="btn btn-primary" id="newTask">New Task</button>
 {{ wtf.quick_form(form, id="taskForm") }}
 
